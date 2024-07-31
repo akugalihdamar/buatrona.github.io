@@ -4,28 +4,25 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  text-align: center;
-  background-image: url('Gambar/wp.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  overflow-y: auto;
-  padding: 20px;
-}
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      background-image: url('Gambar/wp.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff;
+      overflow-y: auto;
+      padding: 20px;
+    }
 
 .container {
   display: flex;
@@ -39,6 +36,12 @@ body {
   max-width: 90%;
   margin: 20px auto; /* Center the container */
 }
+
+.gift-image {
+      margin-bottom: 20px; /* Ruang di bawah gambar */
+      width: 100px; /* Lebar gambar bisa disesuaikan */
+      height: auto;
+    }
 
 h1, h2, p {
   margin: 0;
@@ -352,8 +355,9 @@ button {
 
   <!-- Halaman 1 -->
   <div class="container" id="page1">
+    <img src="Gambar/gift.gif" alt="Gift" class="gift-image" /> <!-- Gambar gift -->
     <h1>Hai manisku ada sesuatu nih!</h1>
-    <p>Klik tombol di bawah ya kalo kamu penasaran hihi</p>
+    <p>Klik tombol di bawah ya kalo kamu penasaran hihi, diplay dulu lagunya biar ga gabut</p>
     <div class="button-container">
       <button onclick="toggleMusic()">🎵</button>
       <button onclick="showPageWithLoading('page2')">&#128140;</button>
