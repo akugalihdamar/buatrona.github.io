@@ -338,8 +338,8 @@ button {
   <title>Buat Rona &#128150;</title>
 </head>
 <body>
-  <audio id="background-music" src="Gambar/backsound.mp3" autoplay loop></audio>
-  
+  <audio id="background-music" src="Gambar/backsound.mp3" loop></audio>
+
   <div class="loading-screen" id="loading-screen">
     <h2>Tunggu bentar ya...</h2>
   </div>
@@ -355,6 +355,7 @@ button {
     <h1>Hai manisku ada sesuatu nih!</h1>
     <p>Klik tombol di bawah ya kalo kamu penasaran hihi</p>
     <div class="button-container">
+      <button onclick="toggleMusic()">🎵</button>
       <button onclick="showPageWithLoading('page2')">&#128140;</button>
     </div>
   </div>
@@ -374,6 +375,7 @@ button {
       <p>POKOKNYA JANGAN PERNAH BERIKIR KMU NGEREPOTIN AKU YAA? ENGGAK SAMA SEKALI AKU MALAH SENENG BANTU KAMU  </p>
     </div>
     <div class="button-container">
+      <button onclick="showPageWithLoading('page1')">Kembali</button>
       <button onclick="showPageWithLoading('page3')">lanjut ke halaman selanjutnya yawww &#128150;</button>
     </div>
   </div>
@@ -410,6 +412,7 @@ button {
       </div>
     </div>
     <div class="button-container">
+      <button onclick="showPageWithLoading('page2')">Kembali</button>
       <button onclick="showPageWithLoading('page4')">Lanjut &#128150;</button>
     </div>
   </div>
@@ -458,6 +461,7 @@ button {
       </div>
     </div>
     <div class="button-container">
+      <button onclick="showPageWithLoading('page3')">Kembali</button>
       <button onclick="showPageWithLoading('page5')">Lanjut &#128150;</button>
     </div>
   </div>
@@ -473,10 +477,33 @@ button {
       <button onclick="mau()">MAU</button>
       <button onmouseover="gak(this)">GAK</button>
     </div>
+    <!-- Tombol Kembali dipisahkan dan ditempatkan di bawah button-container -->
+    <div style="text-align: center; margin-top: 30px;">
+      <button onclick="showPageWithLoading('page4')">Kembali</button>
+    </div>
   </div>
 
 
+
+
   <script>
+    let musicPlaying = false;
+
+    function toggleMusic() {
+      const audio = document.getElementById('background-music');
+      const playButton = document.querySelector('#page1 button');
+
+      if (musicPlaying) {
+        audio.pause();
+        playButton.textContent = '🎵';
+      } else {
+        audio.play();
+        playButton.textContent = '🔇';
+      }
+
+      musicPlaying = !musicPlaying;
+    }
+
    
     function mau() {
       alert("Makasih mau nerima aku :)");
@@ -531,7 +558,7 @@ document.addEventListener('click', (e) => {
 });
 
 window.addEventListener('load', () => {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * window.innerHeight;
     createParticle(x, y);
