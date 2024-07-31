@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
+body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Mulai dari atas */
+  justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Set minimal tinggi sesuai dengan tinggi layar */
+  min-height: 100vh;
   margin: 0;
   text-align: center;
   background-image: url('Gambar/wp.jpg');
@@ -23,141 +23,199 @@
   background-repeat: no-repeat;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  overflow-y: auto; /* Scroll vertikal jika konten melebihi viewport */
-  padding: 0 20px;
+  overflow-y: auto;
+  padding: 20px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(154, 95, 137, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+  max-width: 90%;
+  margin: 20px auto; /* Center the container */
+}
 
-    h1, h2, p {
-      margin: 0;
-    }
+h1, h2, p {
+  margin: 0;
+}
 
-    .container {
-      padding: 20px;
-      text-align: center;
-      display: none;
-      position: relative;
-      background-color: rgba(154, 95, 137, 0.8);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease-in-out;
-    }
+.button-container {
+  margin-top: 20px;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, opacity 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
 
-    .button-container {
-      margin-top: 20px;
-    }
+.scroll-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: rgba(255, 182, 193, 0.7);
+  padding: 15px;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 1rem;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, opacity 0.3s;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
+.scroll-content p {
+  text-align: left;
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
 
-    button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.3);
-      transition: opacity 0.5s, transform 0.5s;
-      transform: translate(-50%, -50%) scale(0.1);
-      opacity: 0;
-      border-radius: 50%;
-    }
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
 
-    button:hover::before {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
+.profile-container img {
+  height: 150px;
+  width: 150px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
 
-    button:hover {
-      background-color: #ff85b4;
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    }
+.profile-container img:hover {
+  transform: rotate(360deg);
+}
 
-    .scroll-content {
-      max-height: 60vh;
-      overflow-y: auto;
-      background-color: rgba(255, 182, 193, 0.7);
-      padding: 15px;
-      border-radius: 15px;
-      margin: 20px auto;
-      width: 100%;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-    }
+.loading-screen, .intermediate-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(243, 95, 221, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
-    .scroll-content p {
-      text-align: left;
-      margin: 0 0 10px;
-      line-height: 1.6;
-    }
+.loading-screen.hidden, .intermediate-loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
-    .profile-container {
-      width: 150px;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
+/* Partikel */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
 
-    .profile-container img {
-      height: 150px;
-      width: 150px;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
+}
 
-    .profile-container img:hover {
-      transform: rotate(360deg);
-    }
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
 
-    .loading-screen, .intermediate-loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(243, 95, 221, 0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
+.photo-item {
+  flex: 1 1 calc(33% - 40px);
+  max-width: calc(33% - 40px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .loading-screen h2, .intermediate-loading-screen h2 {
-      font-size: 2rem;
-      animation: bounce 1.5s infinite;
-      font-family: 'Comic Neue', cursive;
-    }
+.photo-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-item p {
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .photo-item {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .scroll-content {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); opacity: 0; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 
     .loading-screen.hidden, .intermediate-loading-screen.hidden {
       opacity: 0;
