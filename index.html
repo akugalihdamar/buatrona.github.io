@@ -477,52 +477,66 @@ button {
 
 
   <script>
+   
+    function mau() {
+      alert("Makasih mau nerima aku :)");
+      alert("Maaf aku cuma bisa bikinin ginian");
+      alert("Kirim jawabannya ke WA aku ya");
+      location.assign("https://wa.me/6282223474384?text=Aku%20mau%20jadi%20pacar%20Galih%20><");
+    }
+
+    function gak(ini) {
+      ini.style.position = "absolute";
+      ini.style.left = `${Math.floor(Math.random() * 90)}%`;
+      ini.style.top = `${Math.floor(Math.random() * 90)}%`;
+    }
+
     function hideLoadingScreen() {
-      document.getElementById('loading-screen').classList.add('hidden');
-    }
+  document.getElementById('loading-screen').classList.add('hidden');
+}
 
-    function showPageWithLoading(pageId) {
-      const intermediateLoadingScreen = document.getElementById('intermediate-loading-screen');
-      const pages = document.querySelectorAll('.container');
+function showPageWithLoading(pageId) {
+  const intermediateLoadingScreen = document.getElementById('intermediate-loading-screen');
+  const pages = document.querySelectorAll('.container');
 
-      intermediateLoadingScreen.classList.remove('hidden');
+  intermediateLoadingScreen.classList.remove('hidden');
 
-      setTimeout(() => {
-        pages.forEach(page => page.style.display = 'none');
-        document.getElementById(pageId).style.display = 'block';
-        intermediateLoadingScreen.classList.add('hidden');
-      }, 1000);
-    }
+  setTimeout(() => {
+    pages.forEach(page => page.style.display = 'none');
+    document.getElementById(pageId).style.display = 'block';
+    intermediateLoadingScreen.classList.add('hidden');
+  }, 1000);
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-      hideLoadingScreen();
-      showPageWithLoading('page1');
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  hideLoadingScreen();
+  showPageWithLoading('page1');
+});
 
-    function createParticle(x, y) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = `${x}px`;
-      particle.style.top = `${y}px`;
-      document.getElementById('particles').appendChild(particle);
-      setTimeout(() => {
-        particle.remove();
-      }, 5000);
-    }
+function createParticle(x, y) {
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  particle.style.left = `${x}px`;
+  particle.style.top = `${y}px`;
+  document.getElementById('particles').appendChild(particle);
+  setTimeout(() => {
+    particle.remove();
+  }, 5000);
+}
 
-    document.addEventListener('click', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      createParticle(x, y);
-    });
+document.addEventListener('click', (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  createParticle(x, y);
+});
 
-    window.addEventListener('load', () => {
-      for (let i = 0; i < 100; i++) {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        createParticle(x, y);
-      }
-    });
+window.addEventListener('load', () => {
+  for (let i = 0; i < 100; i++) {
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    createParticle(x, y);
+  }
+});
 
   </script>
 </body>
