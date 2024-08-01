@@ -483,7 +483,7 @@ button {
     <h2>Kita udah deket lumayan lama juga, aku juga gamau kita ga punya status dan aku juga gamau dikira cuma main main sam kamu atau ga serius sama kamu, banyak hal yang udah kita jalanin dan itu semua bakal aku inget sampai kapanpun dimanapun aku berada ahay....,jadiiii...Kamu mau ga jadi pacar aku?</h2>
     <div class="button-container">
       <button onclick="mau()">MAU</button>
-      <button onmouseover="gak(this)">GAK</button>
+      <button onclick="gak()">GAK</button>      
     </div>
     <!-- Tombol Kembali dipisahkan dan ditempatkan di bawah button-container -->
     <div style="text-align: center; margin-top: 30px;">
@@ -520,10 +520,10 @@ button {
       location.assign("https://wa.me/6282223474384?text=Aku%20mau%20jadi%20pacar%20Galih%20><");
     }
 
-    function gak(ini) {
-      ini.style.position = "absolute";
-      ini.style.left = `${Math.floor(Math.random() * 90)}%`;
-      ini.style.top = `${Math.floor(Math.random() * 90)}%`;
+    function gak() {
+      alert("Emm okay gapapa aku hargai keputusanmu :(");
+      alert("Kirim jawabanmu ke wa yaa");
+      location.assign("https://wa.me/6282223474384?text=Maaf%20aku%20belum%20bisa%20jadi%20pacarmu%20sekarang");
     }
 
     function hideLoadingScreen() {
